@@ -125,6 +125,17 @@ namespace ProjectCatalogFormsApp.Services
                 return director.Id;
             }
         }
+        public string GetDirectorName(int directorId)
+        {
+            using (var catalogContext = new CatalogContext())
+            {
+                var director = catalogContext.Directors
+                    .FirstOrDefault(d => d.Id == directorId);
+
+                return $"{director.FirstName} {director.LastName}";
+            }
+        }
+
         public int GetGenreId(string genreName)
         {
             using (var catalogContext = new CatalogContext())
@@ -135,6 +146,17 @@ namespace ProjectCatalogFormsApp.Services
                 return genre.Id;
             }
         }
+        public string GetGenreName(int genreId)
+        {
+            using (var catalogContext = new CatalogContext())
+            {
+                var genre = catalogContext.Genres
+                    .FirstOrDefault(g => g.Id == genreId);
+
+                return genre.GenreName;
+            }
+        }
+
         public bool InsertMovieReview(string movieTitle, string review)
         {
             using (var catalogContext = new CatalogContext())

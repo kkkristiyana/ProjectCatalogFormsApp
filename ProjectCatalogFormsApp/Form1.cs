@@ -27,7 +27,7 @@ namespace ProjectCatalogFormsApp
                 opinionMoviecomboBox1.Items.Add(movie.Title);
             }
 
-            if (updateMoviecomboBox1.Items.Count > 0) 
+            if (updateMoviecomboBox1.Items.Count > 0)
             {
                 updateMoviecomboBox1.SelectedIndex = 0;
             }
@@ -52,7 +52,7 @@ namespace ProjectCatalogFormsApp
                 updateDirectorcomboBox2.Items.Add($"{director.FirstName} {director.LastName}");
             }
 
-            if (directorComboBox.Items.Count > 0) 
+            if (directorComboBox.Items.Count > 0)
             {
                 directorComboBox.SelectedIndex = 0;
             }
@@ -96,17 +96,6 @@ namespace ProjectCatalogFormsApp
             ratingComboBox.SelectedIndex = 0;
             updateRatingcomboBox4.SelectedIndex = 0;
             opinionAddRatingcomboBox2.SelectedIndex = 0;
-        }
-
-
-        private void showAllMoviesButton_Click(object sender, EventArgs e)
-        {
-            List<Movie> movies = movieService.GetAllMovies();
-            printAllMoviesList.Items.Clear();
-            foreach (Movie movie in movies) 
-            {
-                printAllMoviesList.Items.Add(movie.Title);
-            }
         }
 
         private void addMoviebutton_Click(object sender, EventArgs e)
@@ -154,7 +143,7 @@ namespace ProjectCatalogFormsApp
 
             int rating = int.Parse(updateRatingcomboBox4.SelectedItem.ToString());
 
-            if (movieService.UpdateMovie(title, directorId, genreId, description, review, rating) == true) 
+            if (movieService.UpdateMovie(title, directorId, genreId, description, review, rating) == true)
             {
                 MessageBox.Show("Successfully updated!");
             }
@@ -219,11 +208,35 @@ namespace ProjectCatalogFormsApp
 
         private void searchMoviebutton1_Click(object sender, EventArgs e)
         {
+            searchMovielistBox1.Items.Clear();
             string description = searchRichTextBox1.Text;
             List<Movie> movies = movieService.MatchMovieByDescription(description);
             foreach (Movie movie in movies)
             {
                 searchMovielistBox1.Items.Add(movie.Title);
+            }
+        }
+
+        private void printAllMoviesList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedMovieInfolistBox1.Items.Clear();
+            string movieTitle = printAllMoviesList.SelectedItem.ToString();
+            Movie movie = movieService.GetMovieByName(movieTitle);
+            selectedMovieInfolistBox1.Items.Add(movie.Id);
+            selectedMovieInfolistBox1.Items.Add(movieService.GetGenreName(movie.GenreId.Value));
+            selectedMovieInfolistBox1.Items.Add(movieService.GetDirectorName(movie.DirectorId.Value));
+            selectedMovieInfolistBox1.Items.Add(movie.Description);
+            selectedMovieInfolistBox1.Items.Add(movie.Review);
+            selectedMovieInfolistBox1.Items.Add(movie.Rating);
+        }
+
+        private void Catalog_Load(object sender, EventArgs e)
+        {
+            List<Movie> movies = movieService.GetAllMovies();
+            printAllMoviesList.Items.Clear();
+            foreach (Movie movie in movies)
+            {
+                printAllMoviesList.Items.Add(movie.Title);
             }
         }
     }

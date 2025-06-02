@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Catalog));
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            selectedMovieInfolistBox1 = new ListBox();
             pictureBox1 = new PictureBox();
-            showAllMoviesButton = new Button();
             printAllMoviesList = new ListBox();
             tabPage2 = new TabPage();
             addMoviebutton = new Button();
@@ -63,6 +63,7 @@
             label11 = new Label();
             label12 = new Label();
             tabPage4 = new TabPage();
+            deleteMoviecomboBox1 = new ComboBox();
             pictureBox2 = new PictureBox();
             deleteButton = new Button();
             label13 = new Label();
@@ -76,6 +77,7 @@
             label15 = new Label();
             label14 = new Label();
             tabPage6 = new TabPage();
+            label19 = new Label();
             sortbutton1 = new Button();
             sortlistBox1 = new ListBox();
             tabPage7 = new TabPage();
@@ -84,8 +86,6 @@
             label18 = new Label();
             searchRichTextBox1 = new RichTextBox();
             label17 = new Label();
-            deleteMoviecomboBox1 = new ComboBox();
-            label19 = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -109,26 +109,37 @@
             tabControl1.Controls.Add(tabPage6);
             tabControl1.Controls.Add(tabPage7);
             tabControl1.Font = new Font("Script MT Bold", 18F, FontStyle.Bold);
-            tabControl1.Location = new Point(1, -3);
+            tabControl1.Location = new Point(1, -2);
+            tabControl1.Margin = new Padding(2);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1236, 691);
+            tabControl1.Size = new Size(989, 553);
             tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
             tabPage1.BackgroundImage = (Image)resources.GetObject("tabPage1.BackgroundImage");
             tabPage1.BackgroundImageLayout = ImageLayout.Stretch;
+            tabPage1.Controls.Add(selectedMovieInfolistBox1);
             tabPage1.Controls.Add(pictureBox1);
-            tabPage1.Controls.Add(showAllMoviesButton);
             tabPage1.Controls.Add(printAllMoviesList);
-            tabPage1.Location = new Point(4, 55);
+            tabPage1.Location = new Point(4, 49);
+            tabPage1.Margin = new Padding(2);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1228, 632);
+            tabPage1.Padding = new Padding(2);
+            tabPage1.Size = new Size(981, 500);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Movies";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // selectedMovieInfolistBox1
+            // 
+            selectedMovieInfolistBox1.FormattingEnabled = true;
+            selectedMovieInfolistBox1.ItemHeight = 37;
+            selectedMovieInfolistBox1.Location = new Point(556, 204);
+            selectedMovieInfolistBox1.Name = "selectedMovieInfolistBox1";
+            selectedMovieInfolistBox1.Size = new Size(406, 263);
+            selectedMovieInfolistBox1.TabIndex = 3;
             // 
             // pictureBox1
             // 
@@ -136,32 +147,23 @@
             pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox1.BorderStyle = BorderStyle.FixedSingle;
-            pictureBox1.Location = new Point(746, 192);
+            pictureBox1.Location = new Point(571, 19);
+            pictureBox1.Margin = new Padding(2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(248, 275);
+            pictureBox1.Size = new Size(141, 163);
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
-            // 
-            // showAllMoviesButton
-            // 
-            showAllMoviesButton.BackgroundImage = (Image)resources.GetObject("showAllMoviesButton.BackgroundImage");
-            showAllMoviesButton.BackgroundImageLayout = ImageLayout.Stretch;
-            showAllMoviesButton.Location = new Point(746, 483);
-            showAllMoviesButton.Name = "showAllMoviesButton";
-            showAllMoviesButton.Size = new Size(444, 104);
-            showAllMoviesButton.TabIndex = 1;
-            showAllMoviesButton.Text = "Show all";
-            showAllMoviesButton.UseVisualStyleBackColor = true;
-            showAllMoviesButton.Click += showAllMoviesButton_Click;
             // 
             // printAllMoviesList
             // 
             printAllMoviesList.FormattingEnabled = true;
-            printAllMoviesList.ItemHeight = 43;
-            printAllMoviesList.Location = new Point(26, 24);
+            printAllMoviesList.ItemHeight = 37;
+            printAllMoviesList.Location = new Point(21, 19);
+            printAllMoviesList.Margin = new Padding(2);
             printAllMoviesList.Name = "printAllMoviesList";
-            printAllMoviesList.Size = new Size(662, 563);
+            printAllMoviesList.Size = new Size(530, 448);
             printAllMoviesList.TabIndex = 0;
+            printAllMoviesList.SelectedIndexChanged += printAllMoviesList_SelectedIndexChanged;
             // 
             // tabPage2
             // 
@@ -180,10 +182,11 @@
             tabPage2.Controls.Add(label3);
             tabPage2.Controls.Add(label2);
             tabPage2.Controls.Add(label1);
-            tabPage2.Location = new Point(4, 55);
+            tabPage2.Location = new Point(4, 49);
+            tabPage2.Margin = new Padding(2);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1228, 632);
+            tabPage2.Padding = new Padding(2);
+            tabPage2.Size = new Size(981, 500);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Add";
             tabPage2.UseVisualStyleBackColor = true;
@@ -191,9 +194,10 @@
             // addMoviebutton
             // 
             addMoviebutton.BackgroundImage = (Image)resources.GetObject("addMoviebutton.BackgroundImage");
-            addMoviebutton.Location = new Point(943, 60);
+            addMoviebutton.Location = new Point(754, 48);
+            addMoviebutton.Margin = new Padding(2);
             addMoviebutton.Name = "addMoviebutton";
-            addMoviebutton.Size = new Size(223, 525);
+            addMoviebutton.Size = new Size(178, 420);
             addMoviebutton.TabIndex = 12;
             addMoviebutton.Text = "Add movie";
             addMoviebutton.UseVisualStyleBackColor = true;
@@ -202,57 +206,64 @@
             // ratingComboBox
             // 
             ratingComboBox.FormattingEnabled = true;
-            ratingComboBox.Location = new Point(252, 534);
+            ratingComboBox.Location = new Point(202, 427);
+            ratingComboBox.Margin = new Padding(2);
             ratingComboBox.Name = "ratingComboBox";
-            ratingComboBox.Size = new Size(590, 51);
+            ratingComboBox.Size = new Size(473, 45);
             ratingComboBox.TabIndex = 11;
             // 
             // reviewRichTextBox
             // 
-            reviewRichTextBox.Location = new Point(242, 408);
+            reviewRichTextBox.Location = new Point(194, 326);
+            reviewRichTextBox.Margin = new Padding(2);
             reviewRichTextBox.Name = "reviewRichTextBox";
-            reviewRichTextBox.Size = new Size(600, 76);
+            reviewRichTextBox.Size = new Size(481, 62);
             reviewRichTextBox.TabIndex = 10;
             reviewRichTextBox.Text = "";
             // 
             // descriptionRichTextBox
             // 
-            descriptionRichTextBox.Location = new Point(297, 270);
+            descriptionRichTextBox.Location = new Point(238, 216);
+            descriptionRichTextBox.Margin = new Padding(2);
             descriptionRichTextBox.Name = "descriptionRichTextBox";
-            descriptionRichTextBox.Size = new Size(545, 100);
+            descriptionRichTextBox.Size = new Size(437, 81);
             descriptionRichTextBox.TabIndex = 9;
             descriptionRichTextBox.Text = "";
             // 
             // genreComboBox
             // 
             genreComboBox.FormattingEnabled = true;
-            genreComboBox.Location = new Point(222, 205);
+            genreComboBox.Location = new Point(178, 164);
+            genreComboBox.Margin = new Padding(2);
             genreComboBox.Name = "genreComboBox";
-            genreComboBox.Size = new Size(620, 51);
+            genreComboBox.Size = new Size(497, 45);
             genreComboBox.TabIndex = 8;
             // 
             // directorComboBox
             // 
             directorComboBox.FormattingEnabled = true;
-            directorComboBox.Location = new Point(336, 126);
+            directorComboBox.Location = new Point(269, 101);
+            directorComboBox.Margin = new Padding(2);
             directorComboBox.Name = "directorComboBox";
-            directorComboBox.Size = new Size(506, 51);
+            directorComboBox.Size = new Size(406, 45);
             directorComboBox.TabIndex = 7;
             // 
             // titleBoxtextBox1
             // 
-            titleBoxtextBox1.Location = new Point(199, 43);
+            titleBoxtextBox1.Location = new Point(159, 34);
+            titleBoxtextBox1.Margin = new Padding(2);
             titleBoxtextBox1.Name = "titleBoxtextBox1";
-            titleBoxtextBox1.Size = new Size(643, 51);
+            titleBoxtextBox1.Size = new Size(515, 44);
             titleBoxtextBox1.TabIndex = 6;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.BackColor = SystemColors.ButtonHighlight;
-            label6.Location = new Point(43, 537);
+            label6.Location = new Point(34, 430);
+            label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(130, 43);
+            label6.Size = new Size(108, 37);
             label6.TabIndex = 5;
             label6.Text = "Rating:";
             // 
@@ -260,9 +271,10 @@
             // 
             label5.AutoSize = true;
             label5.BackColor = SystemColors.ButtonHighlight;
-            label5.Location = new Point(44, 411);
+            label5.Location = new Point(35, 329);
+            label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(133, 43);
+            label5.Size = new Size(111, 37);
             label5.TabIndex = 4;
             label5.Text = "Review:";
             // 
@@ -270,9 +282,10 @@
             // 
             label4.AutoSize = true;
             label4.BackColor = SystemColors.ButtonHighlight;
-            label4.Location = new Point(43, 285);
+            label4.Location = new Point(34, 228);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(191, 43);
+            label4.Size = new Size(159, 37);
             label4.TabIndex = 3;
             label4.Text = "Description:";
             // 
@@ -280,9 +293,10 @@
             // 
             label3.AutoSize = true;
             label3.BackColor = SystemColors.ButtonHighlight;
-            label3.Location = new Point(44, 208);
+            label3.Location = new Point(35, 166);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(108, 43);
+            label3.Size = new Size(91, 37);
             label3.TabIndex = 2;
             label3.Text = "Genre:";
             // 
@@ -290,9 +304,10 @@
             // 
             label2.AutoSize = true;
             label2.BackColor = SystemColors.ButtonHighlight;
-            label2.Location = new Point(43, 129);
+            label2.Location = new Point(34, 103);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(227, 43);
+            label2.Size = new Size(191, 37);
             label2.TabIndex = 1;
             label2.Text = "Director name:";
             // 
@@ -300,9 +315,10 @@
             // 
             label1.AutoSize = true;
             label1.BackColor = SystemColors.ButtonHighlight;
-            label1.Location = new Point(44, 46);
+            label1.Location = new Point(35, 37);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(97, 43);
+            label1.Size = new Size(81, 37);
             label1.TabIndex = 0;
             label1.Text = "Title:";
             // 
@@ -323,10 +339,11 @@
             tabPage3.Controls.Add(label10);
             tabPage3.Controls.Add(label11);
             tabPage3.Controls.Add(label12);
-            tabPage3.Location = new Point(4, 55);
+            tabPage3.Location = new Point(4, 49);
+            tabPage3.Margin = new Padding(2);
             tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(1228, 632);
+            tabPage3.Padding = new Padding(2);
+            tabPage3.Size = new Size(981, 500);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Update";
             tabPage3.UseVisualStyleBackColor = true;
@@ -334,9 +351,10 @@
             // updateButton
             // 
             updateButton.BackgroundImage = (Image)resources.GetObject("updateButton.BackgroundImage");
-            updateButton.Location = new Point(933, 49);
+            updateButton.Location = new Point(746, 39);
+            updateButton.Margin = new Padding(2);
             updateButton.Name = "updateButton";
-            updateButton.Size = new Size(234, 534);
+            updateButton.Size = new Size(187, 427);
             updateButton.TabIndex = 20;
             updateButton.Text = "Update";
             updateButton.UseVisualStyleBackColor = true;
@@ -345,58 +363,65 @@
             // updateMoviecomboBox1
             // 
             updateMoviecomboBox1.FormattingEnabled = true;
-            updateMoviecomboBox1.Location = new Point(338, 46);
+            updateMoviecomboBox1.Location = new Point(270, 37);
+            updateMoviecomboBox1.Margin = new Padding(2);
             updateMoviecomboBox1.Name = "updateMoviecomboBox1";
-            updateMoviecomboBox1.Size = new Size(512, 51);
+            updateMoviecomboBox1.Size = new Size(410, 45);
             updateMoviecomboBox1.TabIndex = 19;
             // 
             // updateRatingcomboBox4
             // 
             updateRatingcomboBox4.FormattingEnabled = true;
-            updateRatingcomboBox4.Location = new Point(360, 537);
+            updateRatingcomboBox4.Location = new Point(288, 430);
+            updateRatingcomboBox4.Margin = new Padding(2);
             updateRatingcomboBox4.Name = "updateRatingcomboBox4";
-            updateRatingcomboBox4.Size = new Size(490, 51);
+            updateRatingcomboBox4.Size = new Size(393, 45);
             updateRatingcomboBox4.TabIndex = 18;
             // 
             // updateReviewrichTextBox2
             // 
-            updateReviewrichTextBox2.Location = new Point(381, 414);
+            updateReviewrichTextBox2.Location = new Point(305, 331);
+            updateReviewrichTextBox2.Margin = new Padding(2);
             updateReviewrichTextBox2.Name = "updateReviewrichTextBox2";
-            updateReviewrichTextBox2.Size = new Size(469, 93);
+            updateReviewrichTextBox2.Size = new Size(376, 75);
             updateReviewrichTextBox2.TabIndex = 17;
             updateReviewrichTextBox2.Text = "";
             // 
             // updateDescriptionrichTextBox1
             // 
-            updateDescriptionrichTextBox1.Location = new Point(444, 276);
+            updateDescriptionrichTextBox1.Location = new Point(355, 221);
+            updateDescriptionrichTextBox1.Margin = new Padding(2);
             updateDescriptionrichTextBox1.Name = "updateDescriptionrichTextBox1";
-            updateDescriptionrichTextBox1.Size = new Size(406, 114);
+            updateDescriptionrichTextBox1.Size = new Size(326, 92);
             updateDescriptionrichTextBox1.TabIndex = 16;
             updateDescriptionrichTextBox1.Text = "";
             // 
             // genreUpdatecomboBox3
             // 
             genreUpdatecomboBox3.FormattingEnabled = true;
-            genreUpdatecomboBox3.Location = new Point(324, 208);
+            genreUpdatecomboBox3.Location = new Point(259, 166);
+            genreUpdatecomboBox3.Margin = new Padding(2);
             genreUpdatecomboBox3.Name = "genreUpdatecomboBox3";
-            genreUpdatecomboBox3.Size = new Size(526, 51);
+            genreUpdatecomboBox3.Size = new Size(422, 45);
             genreUpdatecomboBox3.TabIndex = 15;
             // 
             // updateDirectorcomboBox2
             // 
             updateDirectorcomboBox2.FormattingEnabled = true;
-            updateDirectorcomboBox2.Location = new Point(444, 129);
+            updateDirectorcomboBox2.Location = new Point(355, 103);
+            updateDirectorcomboBox2.Margin = new Padding(2);
             updateDirectorcomboBox2.Name = "updateDirectorcomboBox2";
-            updateDirectorcomboBox2.Size = new Size(406, 51);
+            updateDirectorcomboBox2.Size = new Size(326, 45);
             updateDirectorcomboBox2.TabIndex = 14;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.BackColor = SystemColors.ButtonHighlight;
-            label7.Location = new Point(53, 540);
+            label7.Location = new Point(42, 432);
+            label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
-            label7.Size = new Size(249, 43);
+            label7.Size = new Size(208, 37);
             label7.TabIndex = 11;
             label7.Text = "Pick new rating:";
             // 
@@ -404,9 +429,10 @@
             // 
             label8.AutoSize = true;
             label8.BackColor = SystemColors.ButtonHighlight;
-            label8.Location = new Point(54, 414);
+            label8.Location = new Point(43, 331);
+            label8.Margin = new Padding(2, 0, 2, 0);
             label8.Name = "label8";
-            label8.Size = new Size(268, 43);
+            label8.Size = new Size(225, 37);
             label8.TabIndex = 10;
             label8.Text = "Write new review:";
             // 
@@ -414,9 +440,10 @@
             // 
             label9.AutoSize = true;
             label9.BackColor = SystemColors.ButtonHighlight;
-            label9.Location = new Point(53, 288);
+            label9.Location = new Point(42, 230);
+            label9.Margin = new Padding(2, 0, 2, 0);
             label9.Name = "label9";
-            label9.Size = new Size(334, 43);
+            label9.Size = new Size(279, 37);
             label9.TabIndex = 9;
             label9.Text = "Write new description:";
             // 
@@ -424,9 +451,10 @@
             // 
             label10.AutoSize = true;
             label10.BackColor = SystemColors.ButtonHighlight;
-            label10.Location = new Point(54, 211);
+            label10.Location = new Point(43, 169);
+            label10.Margin = new Padding(2, 0, 2, 0);
             label10.Name = "label10";
-            label10.Size = new Size(202, 43);
+            label10.Size = new Size(170, 37);
             label10.TabIndex = 8;
             label10.Text = "Pick a genre:";
             // 
@@ -434,9 +462,10 @@
             // 
             label11.AutoSize = true;
             label11.BackColor = SystemColors.ButtonHighlight;
-            label11.Location = new Point(53, 132);
+            label11.Location = new Point(42, 106);
+            label11.Margin = new Padding(2, 0, 2, 0);
             label11.Name = "label11";
-            label11.Size = new Size(325, 43);
+            label11.Size = new Size(272, 37);
             label11.TabIndex = 7;
             label11.Text = "Choose director name:";
             // 
@@ -444,9 +473,10 @@
             // 
             label12.AutoSize = true;
             label12.BackColor = SystemColors.ButtonHighlight;
-            label12.Location = new Point(54, 49);
+            label12.Location = new Point(43, 39);
+            label12.Margin = new Padding(2, 0, 2, 0);
             label12.Name = "label12";
-            label12.Size = new Size(215, 43);
+            label12.Size = new Size(179, 37);
             label12.TabIndex = 6;
             label12.Text = "Choose movie:";
             // 
@@ -458,13 +488,24 @@
             tabPage4.Controls.Add(pictureBox2);
             tabPage4.Controls.Add(deleteButton);
             tabPage4.Controls.Add(label13);
-            tabPage4.Location = new Point(4, 55);
+            tabPage4.Location = new Point(4, 49);
+            tabPage4.Margin = new Padding(2);
             tabPage4.Name = "tabPage4";
-            tabPage4.Padding = new Padding(3);
-            tabPage4.Size = new Size(1228, 632);
+            tabPage4.Padding = new Padding(2);
+            tabPage4.Size = new Size(981, 500);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Delete";
             tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // deleteMoviecomboBox1
+            // 
+            deleteMoviecomboBox1.Font = new Font("Script MT Bold", 22F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            deleteMoviecomboBox1.FormattingEnabled = true;
+            deleteMoviecomboBox1.Location = new Point(394, 110);
+            deleteMoviecomboBox1.Margin = new Padding(2);
+            deleteMoviecomboBox1.Name = "deleteMoviecomboBox1";
+            deleteMoviecomboBox1.Size = new Size(389, 52);
+            deleteMoviecomboBox1.TabIndex = 4;
             // 
             // pictureBox2
             // 
@@ -472,9 +513,10 @@
             pictureBox2.BackgroundImage = (Image)resources.GetObject("pictureBox2.BackgroundImage");
             pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox2.BorderStyle = BorderStyle.FixedSingle;
-            pictureBox2.Location = new Point(763, 321);
+            pictureBox2.Location = new Point(610, 257);
+            pictureBox2.Margin = new Padding(2);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(215, 214);
+            pictureBox2.Size = new Size(172, 172);
             pictureBox2.TabIndex = 3;
             pictureBox2.TabStop = false;
             // 
@@ -482,9 +524,10 @@
             // 
             deleteButton.BackgroundImage = (Image)resources.GetObject("deleteButton.BackgroundImage");
             deleteButton.Font = new Font("Script MT Bold", 20F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            deleteButton.Location = new Point(54, 321);
+            deleteButton.Location = new Point(43, 257);
+            deleteButton.Margin = new Padding(2);
             deleteButton.Name = "deleteButton";
-            deleteButton.Size = new Size(632, 214);
+            deleteButton.Size = new Size(506, 171);
             deleteButton.TabIndex = 2;
             deleteButton.Text = "Delete movie";
             deleteButton.UseVisualStyleBackColor = true;
@@ -495,9 +538,10 @@
             label13.AutoSize = true;
             label13.BackColor = SystemColors.ButtonHighlight;
             label13.Font = new Font("Script MT Bold", 26F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label13.Location = new Point(105, 132);
+            label13.Location = new Point(84, 106);
+            label13.Margin = new Padding(2, 0, 2, 0);
             label13.Name = "label13";
-            label13.Size = new Size(309, 63);
+            label13.Size = new Size(261, 53);
             label13.TabIndex = 0;
             label13.Text = "Choose movie:";
             // 
@@ -513,10 +557,11 @@
             tabPage5.Controls.Add(label16);
             tabPage5.Controls.Add(label15);
             tabPage5.Controls.Add(label14);
-            tabPage5.Location = new Point(4, 55);
+            tabPage5.Location = new Point(4, 49);
+            tabPage5.Margin = new Padding(2);
             tabPage5.Name = "tabPage5";
-            tabPage5.Padding = new Padding(3);
-            tabPage5.Size = new Size(1228, 632);
+            tabPage5.Padding = new Padding(2);
+            tabPage5.Size = new Size(981, 500);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Opinion";
             tabPage5.UseVisualStyleBackColor = true;
@@ -524,9 +569,10 @@
             // opinionAddRatingbutton
             // 
             opinionAddRatingbutton.BackColor = SystemColors.ButtonHighlight;
-            opinionAddRatingbutton.Location = new Point(966, 485);
+            opinionAddRatingbutton.Location = new Point(773, 388);
+            opinionAddRatingbutton.Margin = new Padding(2);
             opinionAddRatingbutton.Name = "opinionAddRatingbutton";
-            opinionAddRatingbutton.Size = new Size(192, 55);
+            opinionAddRatingbutton.Size = new Size(154, 44);
             opinionAddRatingbutton.TabIndex = 7;
             opinionAddRatingbutton.Text = "Add";
             opinionAddRatingbutton.UseVisualStyleBackColor = false;
@@ -535,9 +581,10 @@
             // opinionAddReviewbutton
             // 
             opinionAddReviewbutton.BackColor = SystemColors.ButtonHighlight;
-            opinionAddReviewbutton.Location = new Point(966, 318);
+            opinionAddReviewbutton.Location = new Point(773, 254);
+            opinionAddReviewbutton.Margin = new Padding(2);
             opinionAddReviewbutton.Name = "opinionAddReviewbutton";
-            opinionAddReviewbutton.Size = new Size(192, 55);
+            opinionAddReviewbutton.Size = new Size(154, 44);
             opinionAddReviewbutton.TabIndex = 6;
             opinionAddReviewbutton.Text = "Add";
             opinionAddReviewbutton.UseVisualStyleBackColor = false;
@@ -546,34 +593,38 @@
             // opinionAddRatingcomboBox2
             // 
             opinionAddRatingcomboBox2.FormattingEnabled = true;
-            opinionAddRatingcomboBox2.Location = new Point(376, 483);
+            opinionAddRatingcomboBox2.Location = new Point(301, 386);
+            opinionAddRatingcomboBox2.Margin = new Padding(2);
             opinionAddRatingcomboBox2.Name = "opinionAddRatingcomboBox2";
-            opinionAddRatingcomboBox2.Size = new Size(525, 51);
+            opinionAddRatingcomboBox2.Size = new Size(421, 45);
             opinionAddRatingcomboBox2.TabIndex = 5;
             // 
             // opinionAddReviewrichTextBox1
             // 
-            opinionAddReviewrichTextBox1.Location = new Point(376, 220);
+            opinionAddReviewrichTextBox1.Location = new Point(301, 176);
+            opinionAddReviewrichTextBox1.Margin = new Padding(2);
             opinionAddReviewrichTextBox1.Name = "opinionAddReviewrichTextBox1";
-            opinionAddReviewrichTextBox1.Size = new Size(525, 148);
+            opinionAddReviewrichTextBox1.Size = new Size(421, 119);
             opinionAddReviewrichTextBox1.TabIndex = 4;
             opinionAddReviewrichTextBox1.Text = "";
             // 
             // opinionMoviecomboBox1
             // 
             opinionMoviecomboBox1.FormattingEnabled = true;
-            opinionMoviecomboBox1.Location = new Point(376, 81);
+            opinionMoviecomboBox1.Location = new Point(301, 65);
+            opinionMoviecomboBox1.Margin = new Padding(2);
             opinionMoviecomboBox1.Name = "opinionMoviecomboBox1";
-            opinionMoviecomboBox1.Size = new Size(525, 51);
+            opinionMoviecomboBox1.Size = new Size(421, 45);
             opinionMoviecomboBox1.TabIndex = 3;
             // 
             // label16
             // 
             label16.AutoSize = true;
             label16.BackColor = SystemColors.ButtonHighlight;
-            label16.Location = new Point(112, 486);
+            label16.Location = new Point(90, 389);
+            label16.Margin = new Padding(2, 0, 2, 0);
             label16.Name = "label16";
-            label16.Size = new Size(185, 43);
+            label16.Size = new Size(155, 37);
             label16.TabIndex = 2;
             label16.Text = "Add rating:";
             // 
@@ -581,9 +632,10 @@
             // 
             label15.AutoSize = true;
             label15.BackColor = SystemColors.ButtonHighlight;
-            label15.Location = new Point(112, 220);
+            label15.Location = new Point(90, 176);
+            label15.Margin = new Padding(2, 0, 2, 0);
             label15.Name = "label15";
-            label15.Size = new Size(196, 43);
+            label15.Size = new Size(165, 37);
             label15.TabIndex = 1;
             label15.Text = "Add rewiew:";
             // 
@@ -591,9 +643,10 @@
             // 
             label14.AutoSize = true;
             label14.BackColor = SystemColors.ButtonHighlight;
-            label14.Location = new Point(112, 84);
+            label14.Location = new Point(90, 67);
+            label14.Margin = new Padding(2, 0, 2, 0);
             label14.Name = "label14";
-            label14.Size = new Size(215, 43);
+            label14.Size = new Size(179, 37);
             label14.TabIndex = 0;
             label14.Text = "Choose movie:";
             // 
@@ -604,21 +657,34 @@
             tabPage6.Controls.Add(label19);
             tabPage6.Controls.Add(sortbutton1);
             tabPage6.Controls.Add(sortlistBox1);
-            tabPage6.Location = new Point(4, 55);
+            tabPage6.Location = new Point(4, 49);
+            tabPage6.Margin = new Padding(2);
             tabPage6.Name = "tabPage6";
-            tabPage6.Padding = new Padding(3);
-            tabPage6.Size = new Size(1228, 632);
+            tabPage6.Padding = new Padding(2);
+            tabPage6.Size = new Size(981, 500);
             tabPage6.TabIndex = 5;
             tabPage6.Text = "Sort";
             tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.BackColor = SystemColors.ButtonHighlight;
+            label19.Location = new Point(73, 337);
+            label19.Margin = new Padding(2, 0, 2, 0);
+            label19.Name = "label19";
+            label19.Size = new Size(416, 37);
+            label19.TabIndex = 2;
+            label19.Text = "Sort movies in alphabetical order:";
             // 
             // sortbutton1
             // 
             sortbutton1.BackgroundImage = (Image)resources.GetObject("sortbutton1.BackgroundImage");
             sortbutton1.BackgroundImageLayout = ImageLayout.Stretch;
-            sortbutton1.Location = new Point(656, 421);
+            sortbutton1.Location = new Point(525, 337);
+            sortbutton1.Margin = new Padding(2);
             sortbutton1.Name = "sortbutton1";
-            sortbutton1.Size = new Size(454, 157);
+            sortbutton1.Size = new Size(363, 126);
             sortbutton1.TabIndex = 1;
             sortbutton1.Text = "Sort";
             sortbutton1.UseVisualStyleBackColor = true;
@@ -627,10 +693,11 @@
             // sortlistBox1
             // 
             sortlistBox1.FormattingEnabled = true;
-            sortlistBox1.ItemHeight = 43;
-            sortlistBox1.Location = new Point(91, 53);
+            sortlistBox1.ItemHeight = 37;
+            sortlistBox1.Location = new Point(73, 42);
+            sortlistBox1.Margin = new Padding(2);
             sortlistBox1.Name = "sortlistBox1";
-            sortlistBox1.Size = new Size(1019, 305);
+            sortlistBox1.Size = new Size(816, 226);
             sortlistBox1.TabIndex = 0;
             // 
             // tabPage7
@@ -642,10 +709,11 @@
             tabPage7.Controls.Add(label18);
             tabPage7.Controls.Add(searchRichTextBox1);
             tabPage7.Controls.Add(label17);
-            tabPage7.Location = new Point(4, 55);
+            tabPage7.Location = new Point(4, 49);
+            tabPage7.Margin = new Padding(2);
             tabPage7.Name = "tabPage7";
-            tabPage7.Padding = new Padding(3);
-            tabPage7.Size = new Size(1228, 632);
+            tabPage7.Padding = new Padding(2);
+            tabPage7.Size = new Size(981, 500);
             tabPage7.TabIndex = 6;
             tabPage7.Text = "Search";
             tabPage7.UseVisualStyleBackColor = true;
@@ -654,9 +722,10 @@
             // 
             searchMoviebutton1.BackColor = SystemColors.ButtonHighlight;
             searchMoviebutton1.BackgroundImageLayout = ImageLayout.Stretch;
-            searchMoviebutton1.Location = new Point(330, 503);
+            searchMoviebutton1.Location = new Point(264, 402);
+            searchMoviebutton1.Margin = new Padding(2);
             searchMoviebutton1.Name = "searchMoviebutton1";
-            searchMoviebutton1.Size = new Size(166, 54);
+            searchMoviebutton1.Size = new Size(133, 43);
             searchMoviebutton1.TabIndex = 4;
             searchMoviebutton1.Text = "Search";
             searchMoviebutton1.UseVisualStyleBackColor = false;
@@ -665,27 +734,30 @@
             // searchMovielistBox1
             // 
             searchMovielistBox1.FormattingEnabled = true;
-            searchMovielistBox1.ItemHeight = 43;
-            searchMovielistBox1.Location = new Point(609, 123);
+            searchMovielistBox1.ItemHeight = 37;
+            searchMovielistBox1.Location = new Point(487, 98);
+            searchMovielistBox1.Margin = new Padding(2);
             searchMovielistBox1.Name = "searchMovielistBox1";
-            searchMovielistBox1.Size = new Size(530, 434);
+            searchMovielistBox1.Size = new Size(425, 337);
             searchMovielistBox1.TabIndex = 3;
             // 
             // label18
             // 
             label18.AutoSize = true;
             label18.BackColor = SystemColors.ButtonHighlight;
-            label18.Location = new Point(609, 39);
+            label18.Location = new Point(487, 31);
+            label18.Margin = new Padding(2, 0, 2, 0);
             label18.Name = "label18";
-            label18.Size = new Size(530, 43);
+            label18.Size = new Size(441, 37);
             label18.TabIndex = 2;
             label18.Text = "Movies that contain your keywords:";
             // 
             // searchRichTextBox1
             // 
-            searchRichTextBox1.Location = new Point(52, 123);
+            searchRichTextBox1.Location = new Point(42, 98);
+            searchRichTextBox1.Margin = new Padding(2);
             searchRichTextBox1.Name = "searchRichTextBox1";
-            searchRichTextBox1.Size = new Size(444, 344);
+            searchRichTextBox1.Size = new Size(356, 276);
             searchRichTextBox1.TabIndex = 1;
             searchRichTextBox1.Text = "";
             // 
@@ -693,40 +765,23 @@
             // 
             label17.AutoSize = true;
             label17.BackColor = SystemColors.ButtonHighlight;
-            label17.Location = new Point(52, 39);
+            label17.Location = new Point(42, 31);
+            label17.Margin = new Padding(2, 0, 2, 0);
             label17.Name = "label17";
-            label17.Size = new Size(444, 43);
+            label17.Size = new Size(372, 37);
             label17.TabIndex = 0;
             label17.Text = "Type keywords for searching:";
             // 
-            // deleteMoviecomboBox1
-            // 
-            deleteMoviecomboBox1.Font = new Font("Script MT Bold", 22F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            deleteMoviecomboBox1.FormattingEnabled = true;
-            deleteMoviecomboBox1.Location = new Point(493, 137);
-            deleteMoviecomboBox1.Name = "deleteMoviecomboBox1";
-            deleteMoviecomboBox1.Size = new Size(485, 61);
-            deleteMoviecomboBox1.TabIndex = 4;
-            // 
-            // label19
-            // 
-            label19.AutoSize = true;
-            label19.BackColor = SystemColors.ButtonHighlight;
-            label19.Location = new Point(91, 421);
-            label19.Name = "label19";
-            label19.Size = new Size(498, 43);
-            label19.TabIndex = 2;
-            label19.Text = "Sort movies in alphabetical order:";
-            // 
             // Catalog
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1224, 679);
+            ClientSize = new Size(979, 543);
             Controls.Add(tabControl1);
             Margin = new Padding(2);
             Name = "Catalog";
             Text = "Catalog";
+            Load += Catalog_Load;
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -756,7 +811,6 @@
         private TabPage tabPage5;
         private TabPage tabPage6;
         private TabPage tabPage7;
-        private Button showAllMoviesButton;
         private ListBox printAllMoviesList;
         private PictureBox pictureBox1;
         private Label label6;
@@ -805,5 +859,6 @@
         private Label label18;
         private ComboBox deleteMoviecomboBox1;
         private Label label19;
+        private ListBox selectedMovieInfolistBox1;
     }
 }
