@@ -86,6 +86,7 @@
             label18 = new Label();
             searchRichTextBox1 = new RichTextBox();
             label17 = new Label();
+            showMovieInfoUpdatelistBox1 = new ListBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -326,6 +327,7 @@
             // 
             tabPage3.BackgroundImage = (Image)resources.GetObject("tabPage3.BackgroundImage");
             tabPage3.BackgroundImageLayout = ImageLayout.Stretch;
+            tabPage3.Controls.Add(showMovieInfoUpdatelistBox1);
             tabPage3.Controls.Add(updateButton);
             tabPage3.Controls.Add(updateMoviecomboBox1);
             tabPage3.Controls.Add(updateRatingcomboBox4);
@@ -351,10 +353,10 @@
             // updateButton
             // 
             updateButton.BackgroundImage = (Image)resources.GetObject("updateButton.BackgroundImage");
-            updateButton.Location = new Point(746, 39);
+            updateButton.Location = new Point(728, 314);
             updateButton.Margin = new Padding(2);
             updateButton.Name = "updateButton";
-            updateButton.Size = new Size(187, 427);
+            updateButton.Size = new Size(205, 152);
             updateButton.TabIndex = 20;
             updateButton.Text = "Update";
             updateButton.UseVisualStyleBackColor = true;
@@ -368,6 +370,7 @@
             updateMoviecomboBox1.Name = "updateMoviecomboBox1";
             updateMoviecomboBox1.Size = new Size(410, 45);
             updateMoviecomboBox1.TabIndex = 19;
+            updateMoviecomboBox1.SelectedIndexChanged += updateMoviecomboBox1_SelectedIndexChanged;
             // 
             // updateRatingcomboBox4
             // 
@@ -772,6 +775,15 @@
             label17.TabIndex = 0;
             label17.Text = "Type keywords for searching:";
             // 
+            // showMovieInfoUpdatelistBox1
+            // 
+            showMovieInfoUpdatelistBox1.FormattingEnabled = true;
+            showMovieInfoUpdatelistBox1.ItemHeight = 37;
+            showMovieInfoUpdatelistBox1.Location = new Point(728, 39);
+            showMovieInfoUpdatelistBox1.Name = "showMovieInfoUpdatelistBox1";
+            showMovieInfoUpdatelistBox1.Size = new Size(205, 263);
+            showMovieInfoUpdatelistBox1.TabIndex = 21;
+            // 
             // Catalog
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -860,5 +872,6 @@
         private ComboBox deleteMoviecomboBox1;
         private Label label19;
         private ListBox selectedMovieInfolistBox1;
+        private ListBox showMovieInfoUpdatelistBox1;
     }
 }

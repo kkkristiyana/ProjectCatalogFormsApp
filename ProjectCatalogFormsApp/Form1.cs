@@ -13,6 +13,7 @@ namespace ProjectCatalogFormsApp
             LoadDirectors();
             LoadGenres();
             LoadRatings();
+            LoadMoviesWithoutRatingAndReview();
         }
         private void LoadMovies()
         {
@@ -40,6 +41,24 @@ namespace ProjectCatalogFormsApp
                 opinionMoviecomboBox1.SelectedIndex = 0;
             }
 
+        }
+        private void LoadMoviesWithoutRatingAndReview()
+        {
+            List<Movie> movies = movieService.GetAllMovies();
+
+            opinionMoviecomboBox1.Items.Clear();
+
+            foreach (Movie movie in movies)
+            {
+                if (movie.Rating == null && movie.Review == null)
+                {
+                    opinionMoviecomboBox1.Items.Add(movie.Title);
+                }                
+            }
+            if (opinionMoviecomboBox1.Items.Count > 0)
+            {
+                opinionMoviecomboBox1.SelectedIndex = 0;
+            }
         }
         private void LoadDirectors()
         {
@@ -222,7 +241,6 @@ namespace ProjectCatalogFormsApp
             selectedMovieInfolistBox1.Items.Clear();
             string movieTitle = printAllMoviesList.SelectedItem.ToString();
             Movie movie = movieService.GetMovieByName(movieTitle);
-            selectedMovieInfolistBox1.Items.Add(movie.Id);
             selectedMovieInfolistBox1.Items.Add(movieService.GetGenreName(movie.GenreId.Value));
             selectedMovieInfolistBox1.Items.Add(movieService.GetDirectorName(movie.DirectorId.Value));
             selectedMovieInfolistBox1.Items.Add(movie.Description);
@@ -238,6 +256,18 @@ namespace ProjectCatalogFormsApp
             {
                 printAllMoviesList.Items.Add(movie.Title);
             }
+        }
+
+        private void updateMoviecomboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            showMovieInfoUpdatelistBox1.Items.Clear();
+            string movieTitle = updateMoviecomboBox1.SelectedItem.ToString();
+            Movie movie = movieService.GetMovieByName(movieTitle);
+            showMovieInfoUpdatelistBox1.Items.Add(movieService.GetGenreName(movie.GenreId.Value));
+            showMovieInfoUpdatelistBox1.Items.Add(movieService.GetDirectorName(movie.DirectorId.Value));
+            showMovieInfoUpdatelistBox1.Items.Add(movie.Description);
+            showMovieInfoUpdatelistBox1.Items.Add(movie.Review);
+            showMovieInfoUpdatelistBox1.Items.Add(movie.Rating);
         }
     }
 }
